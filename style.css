@@ -1,0 +1,73 @@
+body {
+  background-color: #f7f7f7;
+  color: #525252;
+}
+
+.content {
+  max-width: 900px;
+  min-width: 350px;
+  margin: 30px auto;
+}
+
+.content h1 {
+  text-indent: -999999px;
+  width: 350px;
+  height: 74px;
+  margin: 30px auto;
+  background-image: url(./images/logo-gerencianet.png);
+  background-size: auto;
+  background-size: 350px 74px;
+  background-repeat: no-repeat;
+}
+
+.content .content-white {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.content .content-white h2 {
+  font-size: 35px;
+  text-align: center;
+  color: #f26522;
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+
+.content .content-white p {
+  text-align: justify;
+}
+
+.content .content-white h3 {
+  margin-top: 45px;
+  font-size: 24px;
+}
+
+.content .content-white .button-lightbox {
+  text-align: center;
+}
+
+.content .content-white .button-lightbox button {
+  background-color: #f26522;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+}
+
+.content .content-white .button-lightbox button:hover {
+  background-color: #c84d27;
+  cursor: pointer;
+}
+
+.content .content-white a {
+  color: #00b4c5;
+  text-decoration: none;
+}
+
+.content .content-white a:hover {
+  color: #008996;
+  text-decoration: underline;
+}
