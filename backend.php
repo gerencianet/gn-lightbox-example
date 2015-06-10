@@ -82,7 +82,7 @@
 
     // Checks the received response
     if($response['code'] == '200') {
-      $chargeId = $response['charge']['id'];
+      $chargeId = $response['data']['charge_id'];
 
       $payment = $apiGN->createPayment()
                        ->chargeId($chargeId)
