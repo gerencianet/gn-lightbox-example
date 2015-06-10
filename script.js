@@ -17,7 +17,7 @@ $gn.ready( function( variable ) {
         amount: 2
       } ],
       shippingCosts: 3500,
-      actionForm: 'http:///localhost/ex_lightbox/backend.php'
+      actionForm: 'backend.php'
     };
 
     variable.show( data );
