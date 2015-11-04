@@ -1,5 +1,5 @@
 {
-    "require": {
-        "gerencianet/gerencianet-sdk-php": "^0.1.0"
-    }
+  "require": {
+    "gerencianet/gerencianet-sdk-php": "~1.0.0"
+  }
 }

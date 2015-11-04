@@ -17,4 +17,4 @@ Put your lightbox script in the line 6.
 
 - backend.php:
 
-Put your credentials in the lines 19 and 20.
+Put your credentials in the lines 14 and 15.
