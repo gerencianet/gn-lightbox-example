@@ -1,7 +1,7 @@
 # Example of Gerencianet's lightbox  #
 This is an example of Gerencianet's lightbox.
 
-**:warning: This module is under development and is based on the new API that Gerencianet is about to release. It won't work in production by now.**
+**:warning: Gerencianet API is under BETA version, meaning that it's not available for all users right now. If you're interested, you can always send an email to suportetecnico@gerencianet.com.br and we'll enable it for your account.**
 
 ## Installation ##
 After you download this example, you need run [composer](https://getcomposer.org/):
