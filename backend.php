@@ -24,7 +24,9 @@
       'name' => $item['name'],
       'amount' => (int)$item['amount']
     ];
-
+    
+    // Note that you must get the product values from session/database here. 
+    // The example provided below is for illustration purpose only
     switch($item['code']) {
       case 1: $i['value'] = 12000; break;
       case 2: $i['value'] = 4000; break;
