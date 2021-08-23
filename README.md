@@ -14,16 +14,16 @@
 
 ## Introdução
 
-A integração com o lightbox da Gerencianet lhe permite exibir o formulário de coleta das informações de pagamento sobreposta à sua página de checkout. Por exemplo, quando o cliente adiciona os produtos no carrinho e fecha o pedido, apenas esmaecemos o fundo do seu site e o comprador visualiza uma nova janela modal para preenchimento dos dados de pagamento.
+A integração com o Lightbox da Gerencianet lhe permite exibir o formulário de coleta das informações de pagamento sobreposta à sua página de checkout. Por exemplo, quando o cliente adiciona os produtos no carrinho e fecha o pedido, apenas esmaecemos o fundo do seu site e o comprador visualiza uma nova janela modal para preenchimento dos dados de pagamento.
 
 [Acesse nossa loja de demonstração](https://www.gerencianet.com.br/wp-content/themes/Gerencianet/lightbox/), e experimente como no seguinte exemplo:
 ![Gif lightbox Gerencianet](https://github.com/gerencianet/gn-lightbox-example/blob/master/frontend/assets/img/exemplo-lightbox.gif)
 
-Neste exemplo utilizamos como dependência a SDK de PHP, que é responsável por realizar as requisições na a API Gerencianet. Mas o nosso lightbox, lhe permite integrar sua aplicação também com as [SDKs Gerencianet em outras linguagens disponíveis](https://github.com/gerencianet).
+Neste exemplo utilizamos como dependência a SDK de PHP, que é responsável por realizar as requisições na a API Gerencianet. Mas o nosso Lightbox, lhe permite integrar sua aplicação também com as [SDKs Gerencianet em outras linguagens disponíveis](https://github.com/gerencianet).
 
 
 ## **Como funciona o Lightbox**
-O lightbox se comunica com a API da Gerencianet através de um back-end que deve ser desenvolvido utilizando uma de nossas SDKs disponíveis, de acordo com a necessidade e regra de negocio do sistema integrador. Sendo necessário o integrador desenvolver também a solução de retorno das notificações, utilizando da funcionalidade de callback para boleto e cartão, e o webhook para Pix.
+O Lightbox se comunica com a API da Gerencianet através de um back-end que deve ser desenvolvido utilizando uma de nossas SDKs disponíveis, de acordo com a necessidade e regra de negocio do sistema integrador. Sendo necessário o integrador desenvolver também a solução de retorno das notificações, utilizando da funcionalidade de callback para boleto e cartão, e o webhook para Pix.
 
 
 ## **Instalação da loja de demonstração**
