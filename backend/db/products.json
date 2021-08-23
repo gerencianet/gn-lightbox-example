@@ -1,0 +1,42 @@
+[ {
+    "img": "./assets/img/products/bone.jpg",
+    "name": "Boné",
+    "code": 1,
+    "availableQuantity": 100,
+    "price": 22.50
+},
+{
+    "img": "./assets/img/products/botton.jpg",
+    "name": "Botton",
+    "code": 2,
+    "availableQuantity": 150,
+    "price": 2.25
+},
+{
+    "img": "./assets/img/products/camisa-basica-feminina.jpg",
+    "name": "Camisa básica feminina",
+    "code": 3,
+    "availableQuantity": 120,
+    "price": 45.00
+},
+{
+    "img": "./assets/img/products/camisa-preta-masculina.jpg",
+    "name": "Camisa preta masculina",
+    "code": 4,
+    "availableQuantity": 150,
+    "price": 45.00
+},
+{
+    "img": "./assets/img/products/caneca-branca.jpg",
+    "name": "Caneca branca",
+    "code": 5,
+    "availableQuantity": 100,
+    "price": 20.00
+},
+{
+    "img": "./assets/img/products/caneca-laranja.jpg",
+    "name": "Caneca laranja",
+    "code": 6,
+    "availableQuantity": 100,
+    "price": 20.00
+} ]
