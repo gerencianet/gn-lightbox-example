@@ -14,16 +14,16 @@
 
 ## Introdução
 
-A integração com o lightbox da Gerencianet lhe permite exibir o formulário de coleta das informações de pagamento sobreposta à sua página de checkout. Por exemplo, quando o cliente adiciona os produtos no carrinho e fecha o pedido, apenas esmaecemos o fundo do seu site e o comprador visualiza uma nova janela modal para preenchimento dos dados de pagamento.
+A integração com o Lightbox da Gerencianet lhe permite exibir o formulário de coleta das informações de pagamento sobreposta à sua página de checkout. Por exemplo, quando o cliente adiciona os produtos no carrinho e fecha o pedido, apenas esmaecemos o fundo do seu site e o comprador visualiza uma nova janela modal para preenchimento dos dados de pagamento.
 
 [Acesse nossa loja de demonstração](https://www.gerencianet.com.br/wp-content/themes/Gerencianet/lightbox/), e experimente como no seguinte exemplo:
 ![Gif lightbox Gerencianet](https://github.com/gerencianet/gn-lightbox-example/blob/master/frontend/assets/img/exemplo-lightbox.gif)
 
-Neste exemplo utilizamos como dependência a SDK de PHP, que é responsável por realizar as requisições na a API Gerencianet. Mas o nosso lightbox, lhe permite integrar sua aplicação também com as [SDKs Gerencianet em outras linguagens disponíveis](https://github.com/gerencianet).
+Neste exemplo utilizamos como dependência a SDK de PHP, que é responsável por realizar as requisições na a API Gerencianet. Mas o nosso Lightbox, lhe permite integrar sua aplicação também com as [SDKs Gerencianet em outras linguagens disponíveis](https://github.com/gerencianet).
 
 
 ## **Como funciona o Lightbox**
-O lightbox se comunica com a API da Gerencianet através de um back-end que deve ser desenvolvido utilizando uma de nossas SDKs disponíveis, de acordo com a necessidade e regra de negocio do sistema integrador. Sendo necessário o integrador desenvolver também a solução de retorno das notificações, utilizando da funcionalidade de callback para boleto e cartão, e o webhook para Pix.
+O Lightbox se comunica com a API da Gerencianet através de um back-end que deve ser desenvolvido utilizando uma de nossas SDKs disponíveis, de acordo com a necessidade e regra de negocio do sistema integrador. Sendo necessário o integrador desenvolver também a solução de retorno das notificações, utilizando da funcionalidade de callback para boleto e cartão, e o webhook para Pix.
 
 
 ## **Instalação da loja de demonstração**
@@ -50,7 +50,7 @@ Caso ainda não tenha estes dados, siga os passos descritos em nossa documentaç
 ### **Inserção do script Lightbox**
 A maneira de iniciar o Lightbox, é inserindo em seu site um script fornecido pela Gerencianet que é responsável por carregar a janela de cobrança para o site.
 
-Este script você [obtêm em nossa documentação](https://dev.gerencianet.com.br/docs/checkout-ligthbox), informando o identificador de sua conta, e então será gerado um script semelhante ao seguinte:
+Este script você [obtêm em nossa documentação](https://dev.gerencianet.com.br/docs/checkout-lightbox), informando o identificador de sua conta, e então será gerado um script semelhante ao seguinte:
 
 ```js
 <script type='text/javascript'>var s=document.createElement('script');s.type='text/javascript';var v=parseInt(Math.random()*1000000);s.src='https://sandbox.gerencianet.com.br/v1/cdn/lightbox/identificador_da_conta/'+v;s.async=false;s.id='identificador_da_conta';if(!document.getElementById('identificador_da_conta')){document.getElementsByTagName('head')[0].appendChild(s);};$gn={validForm:true,processed:false,done:{},ready:function(fn){$gn.done=fn;}};</script>
@@ -63,7 +63,7 @@ Tendo o script gerado, você deve inserí-lo na **linha 30** do arquivo `./front
 
 ## **Documentação Adicional**
 
-Em nossa documentação técnica, você pode verificar mais [detalhes das funções do Lightbox Gerencinet](https://dev.gerencianet.com.br/docs/checkout-ligthbox), e também outros detalhes de nossa API.
+Em nossa documentação técnica, você pode verificar mais [detalhes das funções do Lightbox Gerencinet](https://dev.gerencianet.com.br/docs/checkout-lightbox), e também outros detalhes de nossa API.
 
 Se você ainda não tem uma conta digital da Gerencianet, [abra a sua agora](https://sistema.gerencianet.com.br/)!
 
