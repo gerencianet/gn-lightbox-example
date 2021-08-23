@@ -17,7 +17,7 @@
 A integração com o lightbox da Gerencianet lhe permite exibir o formulário de coleta das informações de pagamento sobreposta à sua página de checkout. Por exemplo, quando o cliente adiciona os produtos no carrinho e fecha o pedido, apenas esmaecemos o fundo do seu site e o comprador visualiza uma nova janela modal para preenchimento dos dados de pagamento.
 
 [Acesse nossa loja de demonstração](https://www.gerencianet.com.br/wp-content/themes/Gerencianet/lightbox/), e experimente como no seguinte exemplo:
-![Gif lightbox Gerencianet](https://github.com/gerencianet/gn-lightbox-example/blob/main/frontend/assets/img/exemplo-lightbox.gift)
+![Gif lightbox Gerencianet](https://github.com/gerencianet/gn-lightbox-example/blob/master/frontend/assets/img/exemplo-lightbox.gif)
 
 Neste exemplo utilizamos como dependência a SDK de PHP, que é responsável por realizar as requisições na a API Gerencianet. Mas o nosso lightbox, lhe permite integrar sua aplicação também com as [SDKs Gerencianet em outras linguagens disponíveis](https://github.com/gerencianet).
 
