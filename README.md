@@ -50,7 +50,7 @@ Caso ainda não tenha estes dados, siga os passos descritos em nossa documentaç
 ### **Inserção do script Lightbox**
 A maneira de iniciar o Lightbox, é inserindo em seu site um script fornecido pela Gerencianet que é responsável por carregar a janela de cobrança para o site.
 
-Este script você [obtêm em nossa documentação](https://dev.gerencianet.com.br/docs/checkout-ligthbox), informando o identificador de sua conta, e então será gerado um script semelhante ao seguinte:
+Este script você [obtêm em nossa documentação](https://dev.gerencianet.com.br/docs/checkout-lightbox), informando o identificador de sua conta, e então será gerado um script semelhante ao seguinte:
 
 ```js
 <script type='text/javascript'>var s=document.createElement('script');s.type='text/javascript';var v=parseInt(Math.random()*1000000);s.src='https://sandbox.gerencianet.com.br/v1/cdn/lightbox/identificador_da_conta/'+v;s.async=false;s.id='identificador_da_conta';if(!document.getElementById('identificador_da_conta')){document.getElementsByTagName('head')[0].appendChild(s);};$gn={validForm:true,processed:false,done:{},ready:function(fn){$gn.done=fn;}};</script>
@@ -63,7 +63,7 @@ Tendo o script gerado, você deve inserí-lo na **linha 30** do arquivo `./front
 
 ## **Documentação Adicional**
 
-Em nossa documentação técnica, você pode verificar mais [detalhes das funções do Lightbox Gerencinet](https://dev.gerencianet.com.br/docs/checkout-ligthbox), e também outros detalhes de nossa API.
+Em nossa documentação técnica, você pode verificar mais [detalhes das funções do Lightbox Gerencinet](https://dev.gerencianet.com.br/docs/checkout-lightbox), e também outros detalhes de nossa API.
 
 Se você ainda não tem uma conta digital da Gerencianet, [abra a sua agora](https://sistema.gerencianet.com.br/)!
 
