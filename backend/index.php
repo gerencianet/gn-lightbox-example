@@ -35,11 +35,9 @@ $postCustomer = isset($_POST['customer']) ? $_POST['customer'] : null;
 $postShippingAddress = isset($_POST['shippingAddress']) ? $_POST['shippingAddress'] : null;
 $postPayment = isset($_POST['payment']) ? $_POST['payment'] : null;
 
-
 $json = file_get_contents("./db/products.json");
 $products = json_decode($json);
 $totalValue = 0;
-$items = array();
 
 foreach ($postItems as $item) {
     $i = null;
@@ -115,7 +113,7 @@ try {
             // Obtém o QRCode da cobrança gerada
             $qrcode = $api->pixGenerateQRCode($params);
 
-            $return = [
+            $returnPix = [
                 "code" => 200,
                 "data" => [
                     "pix" => $pix,
@@ -123,7 +121,7 @@ try {
                 ]
             ];
 
-            echo json_encode($return);
+            echo json_encode($returnPix);
         } else {
             echo json_encode($pix);
         }
@@ -133,110 +131,91 @@ try {
      * Método de pagamento Boleto ou Cartão
      */
     else {
-        unset($options['pix_cert']);
-
-        $shippings = array();
         $shippings[] = [
             'name' => 'Frete',
             'value' => (int)$postShipping
         ];
 
-        $chargeBody = [
-            'items' => $items,
-            'shippings' => $shippings,
+        $customer = [
+            'name' => $postCustomer['name'],
+            'email' => $postCustomer['email'],
+            'cpf' => $postCustomer['cpf'],
+            'birth' => $postCustomer['birth'],
+            'phone_number' => $postCustomer['phone']
         ];
 
+        if ($postCustomer['person'] === 'juridical') {
+            $customer['juridical_person'] = [
+                'corporate_name' => $postCustomer['corporate_name'],
+                'cnpj' => $postCustomer['cnpj']
+            ];
+        }
+
+        if ($postShippingAddress) {
+            $shippingAddress = [
+                'street' => $postShippingAddress['street'],
+                'number' => $postShippingAddress['number'],
+                'neighborhood' => $postShippingAddress['neighborhood'],
+                'city' => $postShippingAddress['city'],
+                'state' => $postShippingAddress['state'],
+                'zipcode' => $postShippingAddress['zipcode']
+            ];
+
+            if (isset($postShippingAddress['complement']))
+                $shippingAddress['complement'] = $postShippingAddress['complement'];
+
+            $customer['address'] = $shippingAddress;
+        }
+
+        /**
+         * Método de pagamento Cartão de Crédito
+         */
+        if ($postPayment['method'] == 'credit_card') {
+            $billingAddress = [
+                'street' => $postPayment['address']['street'],
+                'number' => $postPayment['address']['number'],
+                'neighborhood' => $postPayment['address']['neighborhood'],
+                'city' => $postPayment['address']['city'],
+                'state' => $postPayment['address']['state'],
+                'zipcode' => $postPayment['address']['zipcode']
+            ];
+
+            if (isset($postPayment['address']['complement']))
+                $shippingAddress['complement'] = $postPayment['address']['complement'];
+
+
+            $payment['credit_card'] = [
+                'installments' => (int)$postPayment['installments'],
+                'billing_address' => $billingAddress,
+                'payment_token' => $postPayment['payment_token'],
+                'customer' => $customer
+            ];
+        }
+        /**
+         * Método de pagamento Boleto/Bolix
+         */
+        else {
+            $expire = new DateTime();
+            $expire = date_add($expire, date_interval_create_from_date_string("$expirationTime days"));
+
+            $payment['banking_billet'] = [
+                'expire_at' => $expire->format('Y-m-d'),
+                'customer' => $customer
+            ];
+        }
+
+        $chargeBody = [
+            'items' => (array)$items,
+            'shippings' => (array)$shippings,
+            'payment' => (array)$payment
+        ];
+
+        unset($options['pix_cert']);
         $apiGN = new Gerencianet($options);
 
-        // Cria uma nova transação
-        $charge = $apiGN->createCharge([], $chargeBody);
+        $returnCharge = $apiGN->oneStep([], $chargeBody);
 
-        // Verifica a resposta recebida
-        if ($charge['code'] == '200') {
-
-            $customer = [
-                'name' => $postCustomer['name'],
-                'email' => $postCustomer['email'],
-                'cpf' => $postCustomer['cpf'],
-                'birth' => $postCustomer['birth'],
-                'phone_number' => $postCustomer['phone']
-            ];
-
-            if ($postCustomer['person'] === 'juridical') {
-                $customer['juridical_person'] = [
-                    'corporate_name' => $postCustomer['corporate_name'],
-                    'cnpj' => $postCustomer['cnpj']
-                ];
-            }
-
-            if ($postShippingAddress) {
-                $shippingAddress = [
-                    'street' => $postShippingAddress['street'],
-                    'number' => $postShippingAddress['number'],
-                    'neighborhood' => $postShippingAddress['neighborhood'],
-                    'city' => $postShippingAddress['city'],
-                    'state' => $postShippingAddress['state'],
-                    'zipcode' => $postShippingAddress['zipcode']
-                ];
-
-                if (isset($postShippingAddress['complement']))
-                    $shippingAddress['complement'] = $postShippingAddress['complement'];
-
-                $customer['address'] = $shippingAddress;
-            }
-
-            $paymentBody = [
-                'payment' => []
-            ];
-
-            /**
-             * Método de pagamento Cartão de Crédito
-             */
-            if ($postPayment['method'] == 'credit_card') {
-                $billingAddress = [
-                    'street' => $postPayment['address']['street'],
-                    'number' => $postPayment['address']['number'],
-                    'neighborhood' => $postPayment['address']['neighborhood'],
-                    'city' => $postPayment['address']['city'],
-                    'state' => $postPayment['address']['state'],
-                    'zipcode' => $postPayment['address']['zipcode']
-                ];
-
-                if (isset($postPayment['address']['complement']))
-                    $shippingAddress['complement'] = $postPayment['address']['complement'];
-
-
-                $paymentBody['payment']['credit_card'] = [
-                    'installments' => (int)$postPayment['installments'],
-                    'billing_address' => $billingAddress,
-                    'payment_token' => $postPayment['payment_token'],
-                    'customer' => $customer
-                ];
-            }
-            /**
-             * Método de pagamento Boleto/Bolix
-             */
-            else {
-                $expire = new DateTime();
-                $expire = date_add($expire, date_interval_create_from_date_string("$expirationTime days"));
-
-                $paymentBody['payment']['banking_billet'] = [
-                    'expire_at' => $expire->format('Y-m-d'),
-                    'customer' => $customer
-                ];
-            }
-
-            $params = [
-                'id' => $charge['data']['charge_id']
-            ];
-
-            // Associa o método de pagamento à transação criada
-            $payment = $apiGN->payCharge($params, $paymentBody);
-
-            echo json_encode($payment);
-        } else {
-            echo json_encode($charge);
-        }
+        echo json_encode($returnCharge);
     } // #Método de pagamento Boleto ou Cartão
 } catch (GerencianetException $e) {
     $err = [
