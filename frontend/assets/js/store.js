@@ -141,6 +141,7 @@ function addProductsCart(cep = '') {
         columnTdInputShipping.colSpan = 2;
         columnInputShipping.type = "text";
         columnInputShipping.value = cep;
+        columnInputShipping.placeholder= "CEP de entrega";
         columnInputShipping.maxLength = 9;
         columnInputShipping.onkeypress = eventMask;
 
